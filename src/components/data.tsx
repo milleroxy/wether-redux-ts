@@ -1,14 +1,12 @@
 import Form from "./form.tsx";
-import Weather from "./weather.tsx";
-import {useState} from "react";
+import Weather from "./Weather.tsx";
+
 
 const Data = () => {
-    const[city, setCity] = useState('');
-
-    return (
+      return (
         <div>
-            <Form setCity={setCity}/>
-            <Weather city={city}/>
+            <Form/>
+            <Weather/>
         </div>
     );
 };
