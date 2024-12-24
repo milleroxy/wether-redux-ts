@@ -9,7 +9,8 @@ export const weatherApi = createApi({
     reducerPath: 'weatherApi',
     endpoints: builder => ({
         getWeatherByCity: builder.query<WeatherResponse, string>({
-            query:(city: string) => `?q=${city}&appid=${api_key}&units=metric`
+            query:(city: string) => `?q=${city}&appid=${api_key}&units=metric`,
+            keepUnusedDataFor: 60*60
         })
     })
 })
