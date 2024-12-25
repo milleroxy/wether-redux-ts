@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {base_url, api_key} from "../../utils/constants.ts";
-import {WeatherResponse} from "../../utils/types.ts";
-import { WeatherInfo } from "../../utils/types.ts";
+import {WeatherResponse, WeatherInfo} from "../../utils/types.ts";
+
 
 export const weatherApi = createApi({
     baseQuery: fetchBaseQuery({
