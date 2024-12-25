@@ -13,15 +13,14 @@ export const weatherApi = createApi({
             query:(city: string) => `?q=${city}&appid=${api_key}&units=metric`,
             keepUnusedDataFor: 60*60,
             transformResponse: (
-                response: { data: WeatherResponse },
+                response: WeatherResponse
             ): WeatherInfo => {
-                const weather = response.data;
                 return {
-                    city: weather.name,
-                    country: weather.sys.country,
-                    temp: weather.main.temp,
-                    pressure: weather.main.pressure,
-                    sunset: weather.sys.sunset * 1000,
+                    city: response.name,
+                    country: response.sys.country,
+                    temp: response.main.temp,
+                    pressure: response.main.pressure,
+                    sunset: response.sys.sunset * 1000,
                 };
             }
         })
