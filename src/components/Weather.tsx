@@ -5,7 +5,7 @@ import {useAppSelector} from "./app/hooks.ts";
 const Weather = () => {
 
     const city = useAppSelector(state => state.city);
-    const {data, error, isLoading} = useGetWeatherByCityQuery(city, {refetchOnMountOrArgChange: 30});
+    const {data, error, isLoading} = useGetWeatherByCityQuery(city, {refetchOnMountOrArgChange: true});
 
     if (!city) {
         return <div className={'infoWeath'}>Enter city name</div>
