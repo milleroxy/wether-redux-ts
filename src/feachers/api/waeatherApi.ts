@@ -7,19 +7,20 @@ export const weatherApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: base_url
     }),
+    refetchOnMountOrArgChange: 30, // или keepUnusedDataFor: 60*60,
     reducerPath: 'weatherApi',
     endpoints: builder => ({
         getWeatherByCity: builder.query<WeatherInfo, string>({
             query:(city: string) => `?q=${city}&appid=${api_key}&units=metric`,
-            keepUnusedDataFor: 60*60,
+            // keepUnusedDataFor: 60*60,
 
-            transformResponse: (response: WeatherResponse): WeatherInfo => {
+            transformResponse: (data: WeatherResponse) => {
                 return {
-                    city: response.name,
-                    country: response.sys.country,
-                    temp: response.main.temp,
-                    pressure: response.main.pressure,
-                    sunset: response.sys.sunset * 1000,
+                    city: data.name,
+                    country: data.sys.country,
+                    temp: data.main.temp,
+                    pressure: data.main.pressure,
+                    sunset: data.sys.sunset * 1000,
                 };
             }
         })
